@@ -1,0 +1,14 @@
+variables:
+  DOCKER_IMAGE: ubuntu-20.04-gcc-10
+
+.build_and_test:
+  image: maciejpatro/$DOCKER_IMAGE
+  script:
+    - cmake -B release -DCMAKE_BUILD_TYPE=Release -G Ninja
+    - cmake --build release
+    - ctest --test-dir release -VV
+  artifacts:
+    when: always
+    expire_in: 1 week
+    reports:
+      junit: release/*_tests.xml

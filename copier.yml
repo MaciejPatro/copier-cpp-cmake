@@ -1,0 +1,89 @@
+_subdirectory: "[[project_slug]]"
+
+_skip_if_exists:
+  - CHANGELOG.md
+  - CREDITS.md
+
+project_name:
+  type: str
+  help: Your project name
+  placeholder: My Great Project
+
+project_slug:
+  type: str
+  help: Your project slug name - main folder
+  default: "{{ project_name|lower|replace('-', '_')|replace(' ', '_') }}"
+
+project_type:
+  type: str
+  help: Your project type
+  default: header-only library
+  choices:
+    - header-only library
+    - single library
+    - single executable
+    - multi-library project
+    - multi-library with executable
+
+license:
+  type: str
+  help: Chosen project license
+  default: MIT License
+  choices:
+    - MIT License
+    - GNU AGPLv3
+    - GNU GPLv3
+    - GNU LGPLv3
+    - Mozilla Public License 2.0
+    - Apache License 2.0
+    - Boost Software License 1.0
+    - None
+
+creation_year:
+  type: int
+  when: "{{ license != 'None' }}"
+  default: "{{ '%Y' | strftime }}"
+
+license_owner:
+  type: str
+  help: Your project slug name - main folder
+  when: "{{ license != 'None' }}"
+  placeholder: John Doe
+
+cmake_min_version:
+  type: str
+  help: Minimal CMake version required to run project in future
+  default: 3.17
+
+cpp_standard:
+  type: int
+  default: 17
+  choices:
+    - C++23: 23
+    - C++20: 20
+    - C++17: 17
+    - C++14: 14
+    - C++11: 11
+    - C++98: 0
+
+unit_testing_98:
+  type: str
+  default: null
+  when: "{{ cpp_standard == 0}}"
+  choices:
+    - gtest
+    - None
+
+unit_testing_11:
+  type: str
+  default: null
+  when: "{{ cpp_standard > 0}}"
+  choices:
+    - doctest
+    - gtest
+    - None
+
+unit_testing:
+  type: str
+  when: false
+  default: "{% if unit_testing_98 %}{{ unit_testing_98 }}{% else %}{{ unit_testing_11 }}{% endif %}"

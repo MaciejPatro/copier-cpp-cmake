@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION {{ cmake_min_version }})
+
+add_library(sanitize INTERFACE)
+add_library(${PROJECT_NAME}::sanitize ALIAS sanitize)
+
+if (NOT ${CMAKE_BUILD_TYPE} STREQUAL Debug)
+    message(FATAL_ERROR "Only Debug build type is supported for sanitize reports!")
+endif ()
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    target_compile_options(sanitize INTERFACE -fsanitize=address,undefined -fno-omit-frame-pointer)
+    target_link_options(sanitize INTERFACE -fsanitize=address,undefined -fno-omit-frame-pointer)
+else ()
+    message(FATAL_ERROR "${CMAKE_CXX_COMPILER_ID} is not supported for sanitize reports!")
+endif ()

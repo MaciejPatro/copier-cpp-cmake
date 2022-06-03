@@ -1,0 +1,40 @@
+---
+title: Welcome
+---
+
+<img
+    style={{
+        float: 'left',
+        padding: '10px',
+        width: '200px'
+    }}
+    src="/img/logo.png" alt="logo"/>
+
+# Welcome!
+
+**`cookiecutter-cpp-cmake`** is project template based on [cookiecutter tool](https://github.com/cookiecutter/cookiecutter).
+
+The goal of **this** project is to provide an easy way to start with development of your new `C++` project and focus on
+the problem you want to solve instead of project structure/code formatting/basic `CI` and other common "quality of life"
+issues.
+
+To get started go to [documentation section](/docs/intro)
+
+## Why do I need a `C++` project template?
+
+- **To reduce time spent on project setup**. Most of us want to focus on the problem/task we want to solve. Usually we either
+need to spend some significant time to setup project properly or accept that some "nice to have" features like
+`sanitizing` or `clang-format` will be missing at the beginning and "we will add it later".
+- **To have an easy way to create sandbox for testing/prototypes**. we want to setup a `code kata` or test new library. Often
+setting it up and getting needed dependency takes more time than we have or we need to lean on [](https://godbolt.org/)
+omitting our local environment.
+- **To enable less experienced users a fast start with all the benefits of external libraries/tooling**. In a lot of cases
+students/less experienced people have hard time to start with `C++`. How much time would take you to run your first `
+unit-test` starting from scratch?
+- **To provide tools from the start of your project to deploy/share your software**. Lots of projects start with large
+upfront effort without feedback loop from potential users. This can lead to misunderstanding users needs and high-efforts
+for fixing this. Having a means to properly release your software from day one allows people to try it out and get involved
+faster.
+- **To have consistent project structure across multiple small projects developed by same people**. In your organization
+you might have dozens of projects and in lots of cases contributing to each of them requires a slightly different set of
+tools/another workflow. This leads to human-errors and time wasted on thinking "How should I run tests for this project"?

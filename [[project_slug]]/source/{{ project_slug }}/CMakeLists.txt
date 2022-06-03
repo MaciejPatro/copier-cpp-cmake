@@ -1,0 +1,53 @@
+cmake_minimum_required(VERSION {{ cmake_min_version }})
+{{- "\nproject(" ~ project_slug  ~ ")" if project_type== "multi-library project" }}
+
+add_library(${PROJECT_NAME} {{- " INTERFACE" if project_type== "header-only library" }})
+{{- "\nadd_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})" if project_type== "multi-library project" }}
+
+{%- if project_type== "header-only library" %}
+
+target_include_directories(${PROJECT_NAME} INTERFACE include)
+
+target_sources(${PROJECT_NAME}
+    INTERFACE
+        include/{{ project_slug }}/{{ project_slug }}.hpp
+)
+{%- else %}
+
+target_include_directories(${PROJECT_NAME} PUBLIC include)
+
+target_sources(${PROJECT_NAME}
+    PUBLIC
+        include/{{ project_slug }}/{{ project_slug }}.hpp
+    PRIVATE
+        src/{{ project_slug }}.cpp
+)
+{%- endif %}
+
+{%- if project_type== "single executable" %}
+
+add_executable(${PROJECT_NAME}_main src/main.cpp)
+target_link_libraries(${PROJECT_NAME}_main PRIVATE ${PROJECT_NAME} {{ project_slug }}::settings)
+
+{%- endif %}
+
+{%- if unit_testing != "None" %}
+
+if(BUILD_TESTING)
+    {%- if unit_testing == "gtest" %}
+    find_package(GTest REQUIRED)
+
+    add_executable(${PROJECT_NAME}_tests)
+    target_sources(${PROJECT_NAME}_tests PRIVATE tests/{{ project_slug }}_test.cpp)
+    target_link_libraries(${PROJECT_NAME}_tests PRIVATE ${PROJECT_NAME} GTest::GTest {{ project_slug }}::settings)
+    {%- else %}
+    find_package({{ unit_testing }} REQUIRED)
+
+    add_executable(${PROJECT_NAME}_tests)
+    target_sources(${PROJECT_NAME}_tests PRIVATE tests/{{ project_slug }}_test.cpp)
+    target_link_libraries(${PROJECT_NAME}_tests PRIVATE ${PROJECT_NAME} {{ unit_testing }}::{{ unit_testing }} {{ project_slug }}::settings)
+    {%- endif %}
+
+    {{ project_slug }}_add_uts(${PROJECT_NAME})
+endif()
+{%- endif %}

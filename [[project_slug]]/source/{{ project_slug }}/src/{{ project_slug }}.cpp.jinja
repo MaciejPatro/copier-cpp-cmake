@@ -1,0 +1,22 @@
+{%- if open_source_license != "None" -%}
+/////////////////////////////////////////////////////////////////////
+// Copyright (c) {{ creation_year }} {{ license_owner }}.
+// Distributed under the {{ open_source_license }}
+// for more information read LICENSE file.
+/////////////////////////////////////////////////////////////////////
+
+{% endif -%}
+
+#include <{{ project_slug }}/{{ project_slug }}.hpp>
+
+namespace {{ project_slug }} {
+
+{%- if unit_testing != "None" %}
+
+bool tested_function()
+{
+  return true;
+}
+{%- endif %}
+
+} // namespace {{ project_slug }}

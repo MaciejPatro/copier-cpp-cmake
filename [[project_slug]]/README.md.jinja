@@ -1,0 +1,23 @@
+# {{ project_name }}
+
+{{- '\n\nCopyright &copy; ' ~ creation_year ~ ' ' ~ license_owner ~ '\n\n' if license != 'None' }}
+
+{%- if license == 'GNU AGPLv3' -%}
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+{%- elif license == 'GNU GPLv3' -%}
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+{%- elif license == 'GNU LGPLv3' -%}
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
+{%- elif license == 'Mozilla Public License 2.0' -%}
+[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
+{%- elif license == 'Apache License 2.0' -%}
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+{%- elif license == 'MIT License' -%}
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+{%- elif license == 'Boost Software License 1.0' -%}
+[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)
+{%- endif %}
+
+## Introduction
+
+TBD.

@@ -1,0 +1,36 @@
+{%- if open_source_license != "None" -%}
+/////////////////////////////////////////////////////////////////////
+// Copyright (c) {{ creation_year }} {{ license_owner }}.
+// Distributed under the {{ open_source_license }}
+// for more information read LICENSE file.
+/////////////////////////////////////////////////////////////////////
+
+{% endif -%}
+
+{%- if unit_testing == "doctest" -%}
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+
+#include <{{ project_slug }}/{{ project_slug }}.hpp>
+#include <doctest/doctest.h>
+
+namespace {{ project_slug }} {
+
+TEST_CASE("Passing test case")
+{
+  REQUIRE(tested_function());
+}
+
+} // namespace {{ project_slug }}
+{%- elif unit_testing == "gtest" -%}
+#include <{{ project_slug }}/{{ project_slug }}.hpp>
+#include <gtest/gtest.h>
+
+namespace {{ project_slug }} {
+
+TEST({{ project_slug|replace("_", " ")|title|replace(" ", "") }}, PassingTestCase)
+{
+  EXPECT_TRUE(tested_function());
+}
+
+} // namespace {{ project_slug }}
+{%- endif %}

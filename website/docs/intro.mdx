@@ -1,0 +1,29 @@
+---
+sidebar_position: 1
+---
+
+# Getting Started
+
+## What you'll need
+#### Minimal requirements
+- `Python` version `3.7` or newer.
+- `cookiecutter` version `1.7.3` or newer.
+- `cmake` with reasonably new version (`3.xx`)
+```bash
+python3 -m pip install cmake cookiecutter
+```
+#### Extensions
+- `conan` for resolving `3rd-party library dependencies
+```bash
+python3 -m pip install conan
+```
+
+## Create a project from template:
+
+To start project generation simply use command:
+
+```bash
+cookiecutter https://gitlab.com/MaciejPatro/cookiecutter-cpp-cmake
+```
+
+and choose configuration settings when prompted. More detailed description about

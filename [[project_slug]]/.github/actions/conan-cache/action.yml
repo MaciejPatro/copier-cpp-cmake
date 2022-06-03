@@ -1,0 +1,10 @@
+name: 'conan_cache'
+
+runs:
+  using: "composite"
+  steps:
+    - name: cache
+      uses: actions/cache@v2
+      with:
+        path: {{ "${{ env.CONAN_USER_HOME }}" }}
+        key: {{ "${{ hashFiles('./conanfile.py')}}" }}

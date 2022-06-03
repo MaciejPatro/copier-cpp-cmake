@@ -1,0 +1,28 @@
+{%- if open_source_license != "None" -%}
+/////////////////////////////////////////////////////////////////////
+// Copyright (c) {{ creation_year }} {{ license_owner }}.
+// Distributed under the {{ open_source_license }}
+// for more information read LICENSE file.
+/////////////////////////////////////////////////////////////////////
+
+{% endif -%}
+
+#ifndef {{ project_slug|upper }}_{{ project_slug|upper }}_HPP
+#define {{ project_slug|upper }}_{{ project_slug|upper }}_HPP
+
+namespace {{ project_slug }} {
+
+{%- if unit_testing != "None" %}
+{%- if project_type == "header-only library" %}
+bool tested_function()
+{
+  return true;
+}
+{%- else %}
+bool tested_function();
+{%- endif -%}
+{%- endif %}
+
+} // namespace {{ project_slug }}
+
+#endif // {{ project_slug|upper }}_{{ project_slug|upper }}_HPP
