@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION {{ cmake_min_version }})
-{{- "\nproject(" ~ project_slug  ~ ")" if project_type== "multi-library project" }}
+{{- "\nproject(" ~ project_slug  ~ ")" if project_type == "multi-library project" }}
 
 add_library(${PROJECT_NAME} {{- " INTERFACE" if project_type== "header-only library" }})
 {{- "\nadd_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})" if project_type== "multi-library project" }}
@@ -7,7 +7,6 @@ add_library(${PROJECT_NAME} {{- " INTERFACE" if project_type== "header-only libr
 {%- if project_type== "header-only library" %}
 
 target_include_directories(${PROJECT_NAME} INTERFACE include)
-
 target_sources(${PROJECT_NAME}
     INTERFACE
         include/{{ project_slug }}/{{ project_slug }}.hpp
@@ -45,7 +44,12 @@ if(BUILD_TESTING)
 
     add_executable(${PROJECT_NAME}_tests)
     target_sources(${PROJECT_NAME}_tests PRIVATE tests/{{ project_slug }}_test.cpp)
-    target_link_libraries(${PROJECT_NAME}_tests PRIVATE ${PROJECT_NAME} {{ unit_testing }}::{{ unit_testing }} {{ project_slug }}::settings)
+    target_link_libraries(${PROJECT_NAME}_tests
+        PRIVATE
+            ${PROJECT_NAME}
+            {{ unit_testing }}::{{ unit_testing }}
+            {{ project_slug }}::settings
+    )
     {%- endif %}
 
     {{ project_slug }}_add_uts(${PROJECT_NAME})

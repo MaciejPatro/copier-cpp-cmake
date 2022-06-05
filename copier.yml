@@ -59,12 +59,12 @@ cpp_standard:
   type: int
   default: 17
   choices:
-    - C++23: 23
-    - C++20: 20
-    - C++17: 17
-    - C++14: 14
-    - C++11: 11
-    - C++98: 0
+    Cpp23: 23
+    Cpp20: 20
+    Cpp17: 17
+    Cpp14: 14
+    Cpp11: 11
+    Cpp98: 0
 
 unit_testing_98:
   type: str
