@@ -19,8 +19,7 @@ What is **not** a goal of the project:
 
 - namespace changed
 - target_link_libraries for static/executable
-- fixes in clang-format
-- 
+-  conan stuff to improve
 
 
 ## Quick start

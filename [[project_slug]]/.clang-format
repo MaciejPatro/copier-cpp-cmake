@@ -2,28 +2,27 @@
 BasedOnStyle: Microsoft # version >=12 required
 ---
 Language: Cpp
-Standard: c++20
+Standard: c++17
 Cpp11BracedListStyle: true
 
 BreakBeforeBraces: Custom
 BraceWrapping:
-  AfterCaseLabel:        true
-  AfterClass:            true
+  AfterCaseLabel: true
+  AfterClass: true
   AfterControlStatement: MultiLine
-  AfterEnum:             true
-  AfterFunction:         true
-  AfterNamespace:        false
-  AfterObjCDeclaration:  true
-  AfterStruct:           true
-  AfterUnion:            true
-  AfterExternBlock:      true
-  BeforeCatch:           true
-  BeforeElse:            true
-  IndentBraces:          false
-  SplitEmptyFunction:    false
-  SplitEmptyRecord:      false
-  SplitEmptyNamespace:   false
----
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: false
+  AfterObjCDeclaration: true
+  AfterStruct: true
+  AfterUnion: true
+  AfterExternBlock: true
+  BeforeCatch: true
+  BeforeElse: true
+  IndentBraces: false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
 
 IndentWidth: 2
 UseTab: Never
@@ -34,13 +33,12 @@ FixNamespaceComments: true
 BreakConstructorInitializers: BeforeComma
 SpaceBeforeParens: ControlStatements
 PointerAlignment: Left
-SortIncludes: false
+SortIncludes: Never
 AllowShortFunctionsOnASingleLine: Inline
 AllowShortLambdasOnASingleLine: All
 AllowShortBlocksOnASingleLine: Empty
 AllowShortEnumsOnASingleLine: true
 AllowShortIfStatementsOnASingleLine: WithoutElse
 EmptyLineBeforeAccessModifier: LogicalBlock
-BreakBeforeConceptDeclarationsStyle: Always
 IndentPPDirectives: BeforeHash
 BinPackParameters: false
