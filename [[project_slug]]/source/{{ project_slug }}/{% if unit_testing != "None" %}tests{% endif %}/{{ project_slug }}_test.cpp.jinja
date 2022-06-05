@@ -1,7 +1,7 @@
-{%- if open_source_license != "None" -%}
+{%- if license != "None" -%}
 /////////////////////////////////////////////////////////////////////
 // Copyright (c) {{ creation_year }} {{ license_owner }}.
-// Distributed under the {{ open_source_license }}
+// Distributed under the {{ license }}
 // for more information read LICENSE file.
 /////////////////////////////////////////////////////////////////////
 
@@ -21,7 +21,7 @@ TEST_CASE("Passing test case")
 }
 
 } // namespace {{ project_slug }}
-{%- elif unit_testing == "gtest" -%}
+{%- elif unit_testing == "GTest" -%}
 #include <{{ project_slug }}/{{ project_slug }}.hpp>
 #include <gtest/gtest.h>
 

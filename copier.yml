@@ -71,7 +71,7 @@ unit_testing_98:
   default: null
   when: "{{ cpp_standard == 0}}"
   choices:
-    - gtest
+    - GTest
     - None
 
 unit_testing_11:
@@ -80,10 +80,15 @@ unit_testing_11:
   when: "{{ cpp_standard > 0}}"
   choices:
     - doctest
-    - gtest
+    - GTest
     - None
 
 unit_testing:
   type: str
   when: false
   default: "{% if unit_testing_98 %}{{ unit_testing_98 }}{% else %}{{ unit_testing_11 }}{% endif %}"
+
+dependencies:
+  type: bool
+  when: false
+  default: "{% if unit_testing != 'None' %}true{% else %}false{% endif %}"
