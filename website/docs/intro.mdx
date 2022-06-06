@@ -7,10 +7,10 @@ sidebar_position: 1
 ## What you'll need
 #### Minimal requirements
 - `Python` version `3.7` or newer.
-- `cookiecutter` version `1.7.3` or newer.
+- `copier` version `6.0.0` or newer.
 - `cmake` with reasonably new version (`3.xx`)
 ```bash
-python3 -m pip install cmake cookiecutter
+python3 -m pip install cmake copier
 ```
 #### Extensions
 - `conan` for resolving `3rd-party library dependencies
@@ -23,7 +23,7 @@ python3 -m pip install conan
 To start project generation simply use command:
 
 ```bash
-cookiecutter https://gitlab.com/MaciejPatro/cookiecutter-cpp-cmake
+copier https://github.com/MaciejPatro/copier-cpp-cmake/ .
 ```
 
 and choose configuration settings when prompted. More detailed description about

@@ -1,5 +1,5 @@
 {
-  "name": "cookiecutter-cpp-cmake",
+  "name": "copier-cpp-cmake",
   "version": "0.0.0",
   "private": true,
   "scripts": {

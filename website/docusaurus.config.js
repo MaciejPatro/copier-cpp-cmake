@@ -6,15 +6,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'cookiecutter-cpp-cmake',
-  tagline: 'cookiecutter for C++ projects',
+  title: 'copier-cpp-cmake',
+  tagline: 'copier for C++ projects',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'MaciejPatro',
-  projectName: 'cookiecutter-cpp-cmake',
+  projectName: 'copier-cpp-cmake',
 
   presets: [
     [
@@ -23,7 +23,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://gitlab.com/MaciejPatro/cookiecutter-cpp-cmake/-/tree/master/docs/shared',
+          editUrl: 'https://github.com/MaciejPatro/copier-cpp-cmake/blob/master/website/docs/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -36,7 +36,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'cookiecutter-cpp-cmake',
+        title: 'copier-cpp-cmake',
         logo: {
           alt: 'logo',
           src: 'img/logo.svg',
@@ -49,8 +49,8 @@ const config = {
             label: 'Documentation',
           },
           {
-            href: 'https://gitlab.com/MaciejPatro/cookiecutter-cpp-cmake',
-            label: 'GitLab',
+            href: 'https://github.com/MaciejPatro/copier-cpp-cmake/',
+            label: 'GitHub',
             position: 'right',
           },
         ],
