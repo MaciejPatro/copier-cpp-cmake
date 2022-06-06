@@ -99,6 +99,40 @@ unit_testing_11:
     - GTest
     - None
 
+ci_system:
+  type: str
+  help: Support for CI
+  when: "{{ project_setup == 'expert' }}"
+  default: 3.17
+  choices:
+    Gitlab CI: Gitlab
+    Github actions: Github
+    None: None
+
+code_coverage:
+  type: bool
+  help: |
+    Support for code coverage 
+    - enabled by cmake setting -DWITH_COVERAGE=1
+  when: "{{ project_setup == 'expert' }}"
+  default: false
+
+include_what_you_use:
+  type: bool
+  help: |
+    Support for include-what-you-use-tool
+    - enabled by cmake setting -DWITH_IWYU=1
+  when: "{{ project_setup == 'expert' }}"
+  default: false
+
+sanitize:
+  type: bool
+  help: | 
+    Support for address and undefined behaviour sanitizers 
+    - enabled by cmake setting -DWITH_SANITIZE=1
+  when: "{{ project_setup == 'expert' }}"
+  default: false
+
 # internal settings - set by users only indirectly via other settings
 unit_testing:
   type: str

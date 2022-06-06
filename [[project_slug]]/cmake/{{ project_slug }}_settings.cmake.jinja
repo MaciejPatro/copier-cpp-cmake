@@ -12,7 +12,7 @@ option(WITH_VALGRIND "Run unit tests with valgrind" OFF)
 include({{ project_slug }}_add_uts)
 {%- endif %}
 
-{%- if with_coverage == "yes" %}
+{%- if code_coverage %}
 
 option(WITH_COVERAGE "Prepare code-coverage report with coverage" OFF)
 if(WITH_COVERAGE)
@@ -21,7 +21,7 @@ if(WITH_COVERAGE)
     target_link_libraries(settings INTERFACE ${PROJECT_NAME}::coverage)
 endif()
 {%- endif %}
-{%- if with_sanitize == "yes" %}
+{%- if sanitize %}
 
 option(WITH_SANITIZE "Build with address and ub sanitizer" OFF)
 if(WITH_SANITIZE)
@@ -30,7 +30,7 @@ if(WITH_SANITIZE)
     target_link_libraries(settings INTERFACE ${PROJECT_NAME}::sanitize)
 endif()
 {%- endif %}
-{%- if with_iwyu == "yes" %}
+{%- if include_what_you_use %}
 
 option(WITH_IWYU "Enable include-what-you-use checking" OFF)
 if(WITH_IWYU)
@@ -39,7 +39,7 @@ if(WITH_IWYU)
 endif()
 {%- endif %}
 
-if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang" AND NOT WITH_IWYU)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang" {%- if include_what_you_use %} AND NOT WITH_IWYU{%- endif %})
     add_compile_options(-stdlib=libc++)
     add_link_options(-stdlib=libc++)
 endif()
