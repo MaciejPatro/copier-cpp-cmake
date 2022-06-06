@@ -4,10 +4,23 @@ _skip_if_exists:
   - CHANGELOG.md
   - CREDITS.md
 
+# common settings
 project_name:
   type: str
   help: Your project name
   placeholder: My Great Project
+
+project_setup:
+  type: str
+  help: |
+    Type of configuration:
+    - basic: reasonable defaults for simple projects
+    - expert: extensive setup with choices for testing framework, C++ standard,
+      CI, static analysis, packaging etc.
+  default: basic
+  choices:
+    - basic
+    - expert
 
 project_slug:
   type: str
@@ -50,14 +63,11 @@ license_owner:
   when: "{{ license != 'None' }}"
   placeholder: John Doe
 
-cmake_min_version:
-  type: str
-  help: Minimal CMake version required to run project in future
-  default: 3.17
-
+# expert settings
 cpp_standard:
   type: int
   default: 17
+  when: "{{ project_setup == 'expert' }}"
   choices:
     Cpp23: 23
     Cpp20: 20
@@ -66,23 +76,30 @@ cpp_standard:
     Cpp11: 11
     Cpp98: 0
 
+cmake_min_version:
+  type: str
+  help: Minimal CMake version required to run project in future
+  when: "{{ project_setup == 'expert' }}"
+  default: 3.17
+
 unit_testing_98:
   type: str
   default: null
-  when: "{{ cpp_standard == 0}}"
+  when: "{{ cpp_standard == 0 and project_setup == 'expert' }}"
   choices:
     - GTest
     - None
 
 unit_testing_11:
   type: str
-  default: null
-  when: "{{ cpp_standard > 0}}"
+  default: "{% if project_setup == 'basic' %}GTest{% else %}null{% endif %}"
+  when: "{{ cpp_standard > 0 and project_setup == 'expert' }}"
   choices:
     - doctest
     - GTest
     - None
 
+# internal settings - set by users only indirectly via other settings
 unit_testing:
   type: str
   when: false
