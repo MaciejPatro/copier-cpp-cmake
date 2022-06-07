@@ -4,6 +4,10 @@ _skip_if_exists:
   - CHANGELOG.md
   - CREDITS.md
 
+_jinja_extensions:
+- copier_templates_extensions.TemplateExtensionLoader
+- extensions/context.py:ContextUpdater
+
 # common settings
 project_name:
   type: str
@@ -132,14 +136,3 @@ sanitize:
     - enabled by cmake setting -DWITH_SANITIZE=1
   when: "{{ project_setup == 'expert' }}"
   default: false
-
-# internal settings - set by users only indirectly via other settings
-unit_testing:
-  type: str
-  when: false
-  default: "{% if unit_testing_98 %}{{ unit_testing_98 }}{% else %}{{ unit_testing_11 }}{% endif %}"
-
-dependencies:
-  type: bool
-  when: false
-  default: "{% if unit_testing != 'None' %}true{% else %}false{% endif %}"
