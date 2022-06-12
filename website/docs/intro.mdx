@@ -7,15 +7,11 @@ sidebar_position: 1
 ## What you'll need
 #### Minimal requirements
 - `Python` version `3.7` or newer.
-- `copier` version `6.0.0` or newer.
+- `copier` version `6.0.0` or newer and `copier-templates-extensions`.
 - `cmake` with reasonably new version (`3.xx`)
+- `conan` for providing dependencies (`vcpkg` to be supported in future)
 ```bash
-python3 -m pip install cmake copier
-```
-#### Extensions
-- `conan` for resolving `3rd-party library dependencies
-```bash
-python3 -m pip install conan
+python3 -m pip install cmake copier copier-templates-extensions conan
 ```
 
 ## Create a project from template:
@@ -26,4 +22,5 @@ To start project generation simply use command:
 copier https://github.com/MaciejPatro/copier-cpp-cmake/ .
 ```
 
-and choose configuration settings when prompted. More detailed description about
+and choose configuration settings when prompted. More detailed description about them, you can find
+[configuration section](tutorial-basics/configuration.mdx).
