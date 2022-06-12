@@ -4,6 +4,6 @@ variables:
 cache:
   key:
     files:
-      - conanfile.py
+      - conan/conanfile.py
   paths:
     - $CONAN_USER_HOME
