@@ -1,5 +1,5 @@
-name: 'conan_cache'
-description: 'caching for conan packages'
+name: "conan_cache"
+description: "caching for conan packages"
 
 runs:
   using: "composite"
@@ -7,5 +7,5 @@ runs:
     - name: cache
       uses: actions/cache@v2
       with:
-        path: {{ "${{ env.CONAN_USER_HOME }}" }}
-        key: {{ "${{ hashFiles('./conan/conanfile.py')}}" }}
+        path: "${{ env.CONAN_USER_HOME }}"
+        key: "${{ hashFiles('./conan/conanfile.py')}}"
