@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION {{ cmake_min_version }})
 add_library(${PROJECT_NAME} {{- " INTERFACE" if project_type== "header-only library" }})
 {{- "\nadd_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})" if project_type== "multi-library project" }}
 
-{%- if project_type== "header-only library" %}
+{%- if project_type == "header-only library" %}
 
 target_include_directories(${PROJECT_NAME} INTERFACE include)
 target_sources(${PROJECT_NAME}
@@ -14,12 +14,15 @@ target_sources(${PROJECT_NAME}
 {%- else %}
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)
-
 target_sources(${PROJECT_NAME}
     PUBLIC
         include/{{ project_slug }}/{{ project_slug }}.hpp
     PRIVATE
         src/{{ project_slug }}.cpp
+)
+target_link_libraries(${PROJECT_NAME}
+    PRIVATE
+        {{ project_slug }}::settings
 )
 {%- endif %}
 
