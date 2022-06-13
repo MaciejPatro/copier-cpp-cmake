@@ -14,15 +14,6 @@ issues.
 What is **not** a goal of the project:
 * Currently, it is not a goal to help you install/maintain all necessary tools on your machine. The project provides `docker` images for `CI/CD` which can be used during development - but taking care of having properly installed tools is your responsibility.
 
-
-
-
-- namespace changed
-- target_link_libraries for static/executable
--  conan stuff to improve
-
-
 ## Quick start
 
 ## Current state
-
