@@ -4,84 +4,39 @@ sidebar_position: 1
 
 # copier configuration
 
-Common configuration:
+## Common configuration:
 
-| Parameter               | Default                    | Description                                                                                                             |
-|-------------------------|----------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| **project_name**        | ""                         | Name of your project e.g. `My New Project`, `Testing Stuff`, `my-project`                                               |
-| **project_setup**       | `basic` | Choice of the project configuration you want to setup choices: `basic` (reasonable defaults for simple projects), `expert` (extensive setup with choices for testing framework, C++ standard, CI, static analysis, packaging etc.)|
-| **project_slug**        | `slug` from `project_name` | `URL`-friendly version of `project_name` used as the name for projects base directory and `library` name if applicable. |
-| **project_type**   | `header-only`                     | Minimal `CMake` version required to run the project                                                                     |
-| **license** | `MIT License`              | Open source license for the project visible in `LICENSE` file and source code comments.                                 |
-| **license_owner**       | ""                         | Owner of the license (author/you?)                                                                                      |
-| **cmake_min_version**   | `3.17`                     | Minimal `CMake` version required to run the project                                                                     |
-| **cpp_standard**        | `C++17`                    | Version of `C++` standard                                                                                               |
-| **clang_format_file**   | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **type**                | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **unit_testing**        | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **code_coverage**       | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **sanitize**       | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **include_what_you_use**           | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **with_ci**             | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
+All users have to define following settings:
 
-Basic configuration defaults:
+| Parameter                | Default                    | Description                                                                                                                                                                                                                        |
+|--------------------------|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **project_name**         | ""                         | Name of your project e.g. `My New Project`, `Testing Stuff`, `my-project`                                                                                                                                                          |
+| **project_setup**        | `basic`                    | Choice of the project configuration you want to setup choices: `basic` (reasonable defaults for simple projects), `expert` (extensive setup with choices for testing framework, C++ standard, CI, static analysis, packaging etc.) |
+| **project_slug**         | `slug` from `project_name` | `URL`-friendly version of `project_name` used as the name for projects base directory and `library` name if applicable.                                                                                                            |
+| **project_type**         | `header-only`              | choices: `header-only library`, `single library`, `single executable`, `multi-library project`, `multi-library with executable`                                                                                                    |
+| **license**              | `MIT License`              | Open source license for the project visible in `LICENSE` file and source code comments.                                                                                                                                            |
+| **license_owner**        | ""                         | Owner of the license (author/you?)                                                                                                                                                                                                 |
 
-| Parameter               | Default                    | Description                                                                                                             |
-|-------------------------|----------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| **project_name**        | ""                         | Name of your project e.g. `My New Project`, `Testing Stuff`, `my-project`                                               |
-| **project_setup**       | `basic` | Choice of the project configuration you want to setup choices: `basic` (reasonable defaults for simple projects), `expert` (extensive setup with choices for testing framework, C++ standard, CI, static analysis, packaging etc.)|
-| **project_slug**        | `slug` from `project_name` | `URL`-friendly version of `project_name` used as the name for projects base directory and `library` name if applicable. |
-| **license** | `MIT License`              | Open source license for the project visible in `LICENSE` file and source code comments.                                 |
-| **license_owner**       | ""                         | Owner of the license (author/you?)                                                                                      |
-| **cmake_min_version**   | `3.17`                     | Minimal `CMake` version required to run the project                                                                     |
-| **cpp_standard**        | `C++17`                    | Version of `C++` standard                                                                                               |
-| **clang_format_file**   | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **type**                | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **unit_testing**        | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **code_coverage**       | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **sanitize**       | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **include_what_you_use**           | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **with_ci**             | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
+## Basic configuration defaults:
 
-Expert configuration:
+Settings that are automatically applied when `project_setup = basic`.
 
-| Parameter               | Default                    | Description                                                                                                             |
-|-------------------------|----------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| **project_name**        | ""                         | Name of your project e.g. `My New Project`, `Testing Stuff`, `my-project`                                               |
-| **project_setup**       | `basic` | Choice of the project configuration you want to setup choices: `basic` (reasonable defaults for simple projects), `expert` (extensive setup with choices for testing framework, C++ standard, CI, static analysis, packaging etc.)|
-| **project_slug**        | `slug` from `project_name` | `URL`-friendly version of `project_name` used as the name for projects base directory and `library` name if applicable. |
-| **license** | `MIT License`              | Open source license for the project visible in `LICENSE` file and source code comments.                                 |
-| **license_owner**       | ""                         | Owner of the license (author/you?)                                                                                      |
-| **cmake_min_version**   | `3.17`                     | Minimal `CMake` version required to run the project                                                                     |
-| **cpp_standard**        | `C++17`                    | Version of `C++` standard                                                                                               |
-| **clang_format_file**   | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **type**                | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **unit_testing**        | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **code_coverage**       | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **sanitize**       | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **include_what_you_use**           | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
-| **with_ci**             | Nominal                    | Identifies the general zoningclassification of the sale.                                                                |
+| Parameter             | Description                                                                                                                                                                    |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **cpp_standard**      | C++ standard set to `C++17`. Current strategy is to default to 1 version behind the newest one.                                                                                |
+| **cmake_min_version** | Minimal supported CMake version `3.17` as some configurations use features from this version. Strategy is to upgrade requirement only when newer features are used in template |
+| **unit_testing**      | Unit testing framework for basic projects uses `GTest`                                                                                                                         |
 
-project_name:
-project_setup:
-project_slug:
-project_type:
-license:
-creation_year:
-license_owner:
-# expert settings
-cpp_standard:
-cmake_min_version:
-unit_testing_98:
-unit_testing_11:
-ci_system:
-code_coverage:
-include_what_you_use:
-sanitize:
+## Expert configuration:
 
+Available only when user chose `project_setup = expert`:
 
-
-
-
-
-
+| Parameter                | Default                                          | Description                                                                                                                                                                           |
+|--------------------------|--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **cpp_standard**         | `C++17`                                          | `C++` standard supported by project                                                                                                                                                   |
+| **cmake_min_version**    | `3.17`                                           | Minimal CMake version needed by project - depending on what you want                                                                                                                  |
+| **unit_testing**         | `GTest` for C++98, `doctest` for newer standards | Unit testing framework used in project (or `None`)                                                                                                                                    |
+| **ci_system**            | `None`                                           | Generation of supported `ci` workflow - currently supported are: `Gitlab` and `Github`. *Warning* these use custom docker images which reciepes are available in template repository. |
+| **code_coverage**        | `No`                                             | Support for code coverage (enabled by cmake setting `-DWITH_COVERAGE=ON`)                                                                                                             |
+| **include_what_you_use** | `No`                                             | Support for include-what-you-use-tool (enabled by cmake setting `-DWITH_IWYU=ON`)                                                                                                     |
+| **sanitize**             | `No`                                             | Support for address and undefined behaviour sanitizers (enabled by cmake setting `-DWITH_SANITIZE=ON`)                                                                                |
