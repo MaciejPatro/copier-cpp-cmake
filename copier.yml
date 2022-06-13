@@ -56,11 +56,6 @@ license:
     - Boost Software License 1.0
     - None
 
-creation_year:
-  type: int
-  when: "{{ license != 'None' }}"
-  default: "{{ '%Y' | strftime }}"
-
 license_owner:
   type: str
   help: Your project slug name - main folder
