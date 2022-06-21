@@ -4,37 +4,31 @@ include:
   - local: '.gitlab-ci/conan-cache.yml'
 
 test:ubuntu-20.04-gcc-9:
-  extends:
-    - .build_and_test
+  extends: [ .build_and_test ]
   variables:
     DOCKER_IMAGE: ubuntu-20.04-gcc-9
 
 test:ubuntu-20.04-gcc-10:
-  extends:
-    - .build_and_test
+  extends: [ .build_and_test ]
   variables:
     DOCKER_IMAGE: ubuntu-20.04-gcc-10
 
 test:ubuntu-20.04-gcc-11:
-  extends:
-    - .build_and_test
+  extends: [ .build_and_test ]
   variables:
     DOCKER_IMAGE: ubuntu-20.04-gcc-11
 
 test:ubuntu-20.04-clang-12:
-  extends:
-    - .build_and_test
+  extends: [ .build_and_test ]
   variables:
     DOCKER_IMAGE: ubuntu-20.04-clang-12
 
 test:ubuntu-20.04-clang-13:
-  extends:
-    - .build_and_test
+  extends: [ .build_and_test ]
   variables:
     DOCKER_IMAGE: ubuntu-20.04-clang-13
 
 test:ubuntu-20.04-clang-14:
-  extends:
-    - .build_and_test
+  extends: [ .build_and_test ]
   variables:
     DOCKER_IMAGE: ubuntu-20.04-clang-14
