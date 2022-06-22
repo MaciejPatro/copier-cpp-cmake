@@ -16,6 +16,10 @@ What is **not** a goal of the project:
 
 ## Quick start
 
+> **WARNING** 
+> 
+> Currently, project is still in active development and until version `1.0.0` breaking changes may occur unexpectedly.
+
 ### What you'll need
 - `Python` version `3.7` or newer.
 - `copier` version `6.0.0` or newer and `copier-templates-extensions`.
