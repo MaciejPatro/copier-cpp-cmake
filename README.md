@@ -46,6 +46,8 @@ To update project use command:
 copier update <project_dir>
 ```
 
+More information you can find on website: https://maciejpatro.github.io/copier-cpp-cmake/
+
 ## Future development
 
 - `github-pages` introduced
