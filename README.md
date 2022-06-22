@@ -39,22 +39,20 @@ copier https://github.com/MaciejPatro/copier-cpp-cmake/ .
 To update project use command:
 
 ```bash
-copier update .
+copier update <project_dir>
 ```
-
-in your project directory.
 
 ## Future development
 
 - `github-pages` introduced
 - support for `vcpkg`
 - support for `Windows` OS
+- choice of providing own `namespace` for the project instead of defaulting to `project_slug`
+- automated deployment of docker images provided in this repository
 - support for installation of exporting the software as packages (`deb`, `rpm`, `tgz`)
 - support for `conan` package creation
-- choice of providing own `namespace` for the project instead of defaulting to `project_slug`
 - `ci/cd` improvements - deployment of tagged releases support
 - `clang-tidy` support
 - `clang-format` as part of CI (possibly)
-- automated deployment of docker images provided in this repository
 - periodic updates for supported standards/compiler versions
-- many more
+- much more
