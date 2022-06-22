@@ -8,7 +8,7 @@
 * The **main** goal of **this** project is to provide an easy way to start with development of your new `C++` project and focus on
 the problem you want to solve instead of project structure/code formatting/basic `CI` and other common "quality of life"
 issues. 
-* The **secondary** goal is to make this project as **flexible** as reasonable. Allowing people to use different tools as they usually have different needs. 
+* The **secondary** goal is to make this project as **flexible** as reasonable. Allowing people to use different tools as they usually have different needs. Supporting them in updating of their projects when new tools are available or preferred after initial creation during development process.
 * The **third** important aspect is to provide good `defaults` for each choice user can make (default to well established tools) so that less experienced users can use them as good starting point in their `C++` adventure.
 
 What is **not** a goal of the project:
@@ -33,6 +33,16 @@ To start project generation simply use command:
 ```bash
 copier https://github.com/MaciejPatro/copier-cpp-cmake/ .
 ```
+
+### Update already generated project:
+
+To update project use command:
+
+```bash
+copier update .
+```
+
+in your project directory.
 
 ## Future development
 
