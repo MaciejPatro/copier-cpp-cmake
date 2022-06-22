@@ -8,8 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'copier-cpp-cmake',
   tagline: 'copier for C++ projects',
-  url: 'https://MaciejPatro.github.io/copier-cpp-cmake/',
-  baseUrl: '/',
+  url: 'https://maciejpatro.github.io/',
+  baseUrl: '/copier-cpp-cmake/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
