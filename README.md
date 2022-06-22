@@ -16,4 +16,35 @@ What is **not** a goal of the project:
 
 ## Quick start
 
-## Current state
+### What you'll need
+- `Python` version `3.7` or newer.
+- `copier` version `6.0.0` or newer and `copier-templates-extensions`.
+- `cmake` with reasonably new version (`3.xx`)
+- `conan` for providing dependencies (`vcpkg` to be supported in future)
+- compiler of your choice
+```bash
+python3 -m pip install cmake copier copier-templates-extensions conan
+```
+
+### Create a project from template:
+
+To start project generation simply use command:
+
+```bash
+copier https://github.com/MaciejPatro/copier-cpp-cmake/ .
+```
+
+## Future development
+
+- `github-pages` introduced
+- support for `vcpkg`
+- support for `Windows` OS
+- support for installation of exporting the software as packages (`deb`, `rpm`, `tgz`)
+- support for `conan` package creation
+- choice of providing own `namespace` for the project instead of defaulting to `project_slug`
+- `ci/cd` improvements - deployment of tagged releases support
+- `clang-tidy` support
+- `clang-format` as part of CI (possibly)
+- automated deployment of docker images provided in this repository
+- periodic updates for supported standards/compiler versions
+- many more
