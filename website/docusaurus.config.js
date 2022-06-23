@@ -24,7 +24,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/MaciejPatro/copier-cpp-cmake/blob/master/website/docs/',
+          editUrl: 'https://github.com/MaciejPatro/copier-cpp-cmake/blob/master/website/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
