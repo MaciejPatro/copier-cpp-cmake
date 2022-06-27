@@ -39,7 +39,7 @@ target_link_libraries(${PROJECT_NAME}_main
 {%- if unit_testing != "None" %}
 
 if(BUILD_TESTING)
-    find_package({{ unit_testing }} REQUIRED)
+    find_package({% if unit_testing == "boost-ext-ut" %}ut{% else %}{{ unit_testing }}{% endif %} REQUIRED)
 
     add_executable(${PROJECT_NAME}_tests)
     target_sources(${PROJECT_NAME}_tests
@@ -49,7 +49,7 @@ if(BUILD_TESTING)
     target_link_libraries(${PROJECT_NAME}_tests
         PRIVATE
             ${PROJECT_NAME}
-            {{ unit_testing }}::{{ unit_testing }}
+            {% if unit_testing == "boost-ext-ut" %}boost::ut{% else %}{{ unit_testing }}::{{ unit_testing }}{% endif %}
             {{ project_slug }}::settings
     )
     {{ project_slug }}_add_uts(${PROJECT_NAME})

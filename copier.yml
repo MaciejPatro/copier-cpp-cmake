@@ -82,20 +82,33 @@ cmake_min_version:
   default: 3.17
 
 unit_testing_98:
-  type: str
-  default: null
   when: "{{ cpp_standard == 0 and project_setup == 'expert' }}"
   choices:
     - GTest
     - None
 
 unit_testing_11:
-  type: str
-  default: "{% if project_setup == 'basic' %}GTest{% else %}null{% endif %}"
-  when: "{{ cpp_standard > 0 and project_setup == 'expert' }}"
+  when: "{{ cpp_standard == 11 and project_setup == 'expert' }}"
   choices:
     - doctest
     - GTest
+    - None
+
+unit_testing_14:
+  when: "{{ cpp_standard == 14 and project_setup == 'expert' }}"
+  choices:
+    - doctest
+    - GTest
+    - Catch2
+    - None
+
+unit_testing_17:
+  when: "{{ cpp_standard >= 17 and project_setup == 'expert' }}"
+  choices:
+    - doctest
+    - GTest
+    - Catch2
+    - boost-ext-ut
     - None
 
 ci_system:

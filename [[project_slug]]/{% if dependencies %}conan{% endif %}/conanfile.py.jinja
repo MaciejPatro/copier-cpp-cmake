@@ -12,5 +12,9 @@ class {{ project_slug|replace("_", " ")|title|replace(" ", "") }}(ConanFile):
         {%- else %}
         "gtest/1.11.0"
         {%- endif %}
+    {%- elif unit_testing == "Catch2" %}
+        "catch2/3.0.1"
+    {%- elif unit_testing == "boost-ext-ut" %}
+        "boost-ext-ut/1.1.9"
     {%- endif %}
     ]

@@ -33,4 +33,30 @@ TEST({{ project_slug|replace("_", " ")|title|replace(" ", "") }}, PassingTestCas
 }
 
 } // namespace {{ project_slug }}
+{%- elif unit_testing == "Catch2" -%}
+#include <{{ project_slug }}/{{ project_slug }}.hpp>
+#include <catch2/catch_test_macros.hpp>
+
+namespace {{ project_slug }} {
+
+TEST_CASE("First running unit test", "[{{ project_slug }}]")
+{
+  REQUIRE(tested_function());
+}
+
+} // namespace {{ project_slug }}
+{%- elif unit_testing == "boost-ext-ut" -%}
+#include <{{ project_slug }}/{{ project_slug }}.hpp>
+#include <boost/ut.hpp>
+
+using boost::ut::operator""_test;
+using namespace boost::ut;
+
+namespace {{ project_slug }} {
+
+suite {{ project_slug }}_tests = [] { "first running"_test = [] { expect(tested_function()); }; };
+
+} // namespace {{ project_slug }}
+
+int main() {}
 {%- endif %}

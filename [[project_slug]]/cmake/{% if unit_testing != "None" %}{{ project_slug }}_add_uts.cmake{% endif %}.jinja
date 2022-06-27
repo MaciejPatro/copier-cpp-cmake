@@ -13,7 +13,7 @@ function ({{ project_slug }}_add_uts TARGET)
                 COMMAND
                     valgrind --tool=memcheck --leak-check=yes
                     $<TARGET_FILE:${TARGET}_tests>
-{%- if unit_testing == "doctest" %}
+{%- if unit_testing == "doctest" or unit_testing == "Catch2" %}
                     $<$<BOOL:$ENV{CI}>:-r=junit>
                     $<$<BOOL:$ENV{CI}>:-o=${CMAKE_BINARY_DIR}/${TARGET}_tests.xml>
 {%- elif unit_testing == "GTest" -%}
@@ -25,7 +25,7 @@ function ({{ project_slug }}_add_uts TARGET)
                 NAME ${TARGET}_uts
                 COMMAND
                     $<TARGET_FILE:${TARGET}_tests>
-{%- if unit_testing == "doctest" %}
+{%- if unit_testing == "doctest" or unit_testing == "Catch2" %}
                     $<$<BOOL:$ENV{CI}>:-r=junit>
                     $<$<BOOL:$ENV{CI}>:-o=${CMAKE_BINARY_DIR}/${TARGET}_tests.xml>
 {%- elif unit_testing == "GTest" -%}
