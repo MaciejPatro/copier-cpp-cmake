@@ -10,19 +10,18 @@
 #ifndef {{ project_slug|upper }}_{{ project_slug|upper }}_HPP
 #define {{ project_slug|upper }}_{{ project_slug|upper }}_HPP
 
-namespace {{ project_slug }} {
-
-{%- if unit_testing != "None" %}
-{%- if project_type == "header-only library" %}
+{%- if project_namespace|length %}{{ '\n\nnamespace ' ~ project_namespace ~ ' {' }}{% endif %}
+{% if unit_testing != "None" %}
+    {%- if project_type == "header-only library" %}
 bool tested_function()
 {
   return true;
 }
-{%- else %}
+    {%- else %}
 bool tested_function();
-{%- endif -%}
+    {%- endif -%}
 {%- endif %}
 
-} // namespace {{ project_slug }}
+{%- if project_namespace|length %}{{ '\n\n} // namespace ' ~ project_namespace }} {%- endif %}
 
 #endif // {{ project_slug|upper }}_{{ project_slug|upper }}_HPP

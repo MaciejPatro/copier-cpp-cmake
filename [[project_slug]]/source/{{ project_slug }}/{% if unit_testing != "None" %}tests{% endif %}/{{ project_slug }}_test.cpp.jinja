@@ -13,38 +13,38 @@
 #include "{{ project_slug }}/{{ project_slug }}.hpp"
 #include <doctest/doctest.h>
 
-namespace {{ project_slug }} {
+{%- if project_namespace|length %}{{ '\n\nnamespace ' ~ project_namespace ~ ' {' }}{% endif %}
 
 TEST_CASE("Passing test case")
 {
   REQUIRE(tested_function());
 }
 
-} // namespace {{ project_slug }}
+{%- if project_namespace|length %}{{ '\n\n} // namespace ' ~ project_namespace }} {%- endif %}
 {%- elif unit_testing == "GTest" -%}
 #include "{{ project_slug }}/{{ project_slug }}.hpp"
 #include <gtest/gtest.h>
 
-namespace {{ project_slug }} {
+{%- if project_namespace|length %}{{ '\n\nnamespace ' ~ project_namespace ~ ' {' }}{% endif %}
 
 TEST({{ project_slug|replace("_", " ")|title|replace(" ", "") }}, PassingTestCase)
 {
   EXPECT_TRUE(tested_function());
 }
 
-} // namespace {{ project_slug }}
+{%- if project_namespace|length %}{{ '\n\n} // namespace ' ~ project_namespace }} {%- endif %}
 {%- elif unit_testing == "Catch2" -%}
 #include "{{ project_slug }}/{{ project_slug }}.hpp"
 #include <catch2/catch_test_macros.hpp>
 
-namespace {{ project_slug }} {
+{%- if project_namespace|length %}{{ '\n\nnamespace ' ~ project_namespace ~ ' {' }}{% endif %}
 
 TEST_CASE("First running unit test", "[{{ project_slug }}]")
 {
   REQUIRE(tested_function());
 }
 
-} // namespace {{ project_slug }}
+{%- if project_namespace|length %}{{ '\n\n} // namespace ' ~ project_namespace }} {%- endif %}
 {%- elif unit_testing == "boost-ext-ut" -%}
 #include "{{ project_slug }}/{{ project_slug }}.hpp"
 #include <boost/ut.hpp>
@@ -52,11 +52,11 @@ TEST_CASE("First running unit test", "[{{ project_slug }}]")
 using boost::ut::operator""_test;
 using namespace boost::ut;
 
-namespace {{ project_slug }} {
+{%- if project_namespace|length %}{{ '\n\nnamespace ' ~ project_namespace ~ ' {' }}{% endif %}
 
 suite {{ project_slug }}_tests = [] { "first running"_test = [] { expect(tested_function()); }; };
 
-} // namespace {{ project_slug }}
+{%- if project_namespace|length %}{{ '\n\n} // namespace ' ~ project_namespace }} {%- endif %}
 
 int main() {}
 {%- endif %}
