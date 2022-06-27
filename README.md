@@ -53,7 +53,7 @@ More information you can find on website: https://maciejpatro.github.io/copier-c
 - [x] `github-pages` introduced
 - [ ] support for `vcpkg`
 - [ ] support for `Windows` OS
-- [ ] choice of providing own `namespace` for the project instead of defaulting to `project_slug`
+- [x] choice of providing own `namespace` for the project instead of defaulting to `project_slug`
 - [ ] automated deployment of docker images provided in this repository
 - [ ] support for installation of exporting the software as packages (`deb`, `rpm`, `tgz`)
 - [ ] support for `conan` package creation
