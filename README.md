@@ -35,7 +35,7 @@ python3 -m pip install cmake copier copier-templates-extensions conan
 To start project generation simply use command:
 
 ```bash
-copier https://github.com/MaciejPatro/copier-cpp-cmake/ .
+copier git@github.com:MaciejPatro/copier-cpp-cmake.git .
 ```
 
 ### Update already generated project:
