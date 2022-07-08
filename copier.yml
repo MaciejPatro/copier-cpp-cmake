@@ -90,6 +90,7 @@ cmake_min_version:
 unit_testing_98:
   when: "{{ cpp_standard == 0 and project_setup == 'expert' }}"
   help: Unit testing framework for the project
+  default: GTest
   choices:
     - GTest
     - None
@@ -97,6 +98,7 @@ unit_testing_98:
 unit_testing_11:
   when: "{{ cpp_standard == 11 and project_setup == 'expert' }}"
   help: Unit testing framework for the project
+  default: doctest
   choices:
     - doctest
     - GTest
@@ -105,6 +107,7 @@ unit_testing_11:
 unit_testing_14:
   when: "{{ cpp_standard == 14 and project_setup == 'expert' }}"
   help: Unit testing framework for the project
+  default: doctest
   choices:
     - doctest
     - GTest
@@ -114,6 +117,7 @@ unit_testing_14:
 unit_testing_17:
   when: "{{ cpp_standard >= 17 and project_setup == 'expert' }}"
   help: Unit testing framework for the project
+  default: doctest
   choices:
     - doctest
     - GTest
