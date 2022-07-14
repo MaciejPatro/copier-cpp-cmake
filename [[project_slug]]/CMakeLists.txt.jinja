@@ -7,17 +7,7 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 include({{ project_slug }}_settings)
 
 {%- if unit_testing != "None" %}
-
 include({{ project_slug }}_conan)
-
-conan_cmake_autodetect(DETECTED_SETTINGS)
-conan_cmake_install(
-    PATH_OR_REFERENCE ${CMAKE_SOURCE_DIR}/conan
-    BUILD missing
-    SETTINGS ${DETECTED_SETTINGS}
-)
-
 {%- endif %}
-
 include(CTest)
 add_subdirectory(source)

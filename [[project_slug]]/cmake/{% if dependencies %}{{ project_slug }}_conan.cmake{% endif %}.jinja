@@ -13,3 +13,23 @@ if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
 endif()
 
 include(${CMAKE_BINARY_DIR}/conan.cmake)
+
+if(NOT CMAKE_CONFIGURATION_TYPES)
+    message(STATUS "Single configuration build!")
+    set(LIST_OF_BUILD_TYPES ${CMAKE_BUILD_TYPE})
+    set(CONAN_CMAKE_GENERATOR "cmake_find_package")
+else()
+    message(STATUS "Multi-configuration build: '${CMAKE_CONFIGURATION_TYPES}'!")
+    set(LIST_OF_BUILD_TYPES ${CMAKE_CONFIGURATION_TYPES})
+    set(CONAN_CMAKE_GENERATOR "cmake_find_package_multi")
+endif()
+
+foreach(TYPE ${LIST_OF_BUILD_TYPES})
+    conan_cmake_autodetect(DETECTED_SETTINGS BUILD_TYPE ${TYPE})
+    conan_cmake_install(
+        PATH_OR_REFERENCE ${CMAKE_SOURCE_DIR}/conan
+        BUILD missing
+        GENERATOR ${CONAN_CMAKE_GENERATOR}
+        SETTINGS ${DETECTED_SETTINGS}
+    )
+endforeach()
