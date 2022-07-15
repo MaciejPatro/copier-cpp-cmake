@@ -5,8 +5,8 @@ _skip_if_exists:
   - CREDITS.md
 
 _jinja_extensions:
-- copier_templates_extensions.TemplateExtensionLoader
-- extensions/context.py:ContextUpdater
+  - copier_templates_extensions.TemplateExtensionLoader
+  - extensions/context.py:ContextUpdater
 
 # common settings
 project_name:
@@ -87,6 +87,16 @@ cmake_min_version:
   when: "{{ project_setup == 'expert' }}"
   default: 3.17
 
+dependencies:
+  type: str
+  help: Tool used for dependencies management
+  when: "{{ project_setup == 'expert' }}"
+  default: conan
+  choices:
+    - conan
+    - vcpkg
+    - None
+
 unit_testing_98:
   when: "{{ cpp_standard == 0 and project_setup == 'expert' }}"
   help: Unit testing framework for the project
@@ -153,7 +163,7 @@ include_what_you_use:
 
 sanitize:
   type: bool
-  help: | 
+  help: |
     Support for address and undefined behaviour sanitizers 
     - enabled by cmake setting -DWITH_SANITIZE=1
   when: "{{ project_setup == 'expert' }}"

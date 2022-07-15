@@ -1,10 +1,12 @@
 name: build-and-test
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
+  { %- if dependencies == "conan" % }
 env:
   CONAN_SYSREQUIRES_MODE: enabled
   CONAN_USER_HOME: "${{ github.workspace }}/conan-cache"
+  { %- endif % }
 
 jobs:
   test:

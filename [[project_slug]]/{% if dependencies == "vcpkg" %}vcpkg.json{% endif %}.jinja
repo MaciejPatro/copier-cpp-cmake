@@ -1,0 +1,28 @@
+{
+    "name": "{{ project_slug }}",
+    "version-string": "latest",
+    "dependencies": [
+    {%- if unit_testing == "doctest" %}
+        "doctest"
+    {%- elif unit_testing == "GTest" %}
+        "gtest"
+    {%- elif unit_testing == "Catch2" %}
+        "catch2"
+    {%- elif unit_testing == "boost-ext-ut" %}
+        "boost-ext-ut"
+    {%- endif %}
+    ],
+    "overrides": [
+    {%- if unit_testing == "doctest" %}
+        { "name": "doctest", "version": "2.4.8" }
+    {%- elif unit_testing == "GTest" %}
+        {%- if cpp_standard == 0 %}
+        { "name": "gtest", "version": "1.8.1-1" }
+        {%- else %}
+        { "name": "gtest", "version": "1.11.0" }
+        {%- endif %}
+    {%- elif unit_testing == "Catch2" %}
+        { "name": "catch2", "version": "3.0.1" }
+    {%- endif %}
+    ]
+}

@@ -18,5 +18,4 @@ class ContextUpdater(ContextHook):
         if context['license'] != 'None':
             context['creation_year'] = datetime.date.today().strftime("%Y")
 
-        context['dependencies'] = context['unit_testing'] != 'None'
         context['has_main'] = 'executable' in context['project_type']

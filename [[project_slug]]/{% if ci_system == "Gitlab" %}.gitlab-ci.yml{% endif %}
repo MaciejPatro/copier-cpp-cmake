@@ -1,7 +1,9 @@
 include:
   - template: 'Workflows/MergeRequest-Pipelines.gitlab-ci.yml'
   - local: '.gitlab-ci/build-and-test.yml'
+{%- if dependencies == "conan" %}
   - local: '.gitlab-ci/conan-cache.yml'
+{%- endif %}
 
 test:ubuntu-20.04-gcc-9:
   extends: [ .build_and_test ]
