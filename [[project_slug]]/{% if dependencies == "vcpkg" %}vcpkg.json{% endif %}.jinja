@@ -1,5 +1,5 @@
 {
-    "name": "{{ project_slug }}",
+    "name": "{{ project_slug|replace('_', '-') }}",
     "version-string": "latest",
     "dependencies": [
     {%- if unit_testing == "doctest" %}
