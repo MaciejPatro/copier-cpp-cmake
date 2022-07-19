@@ -3,34 +3,36 @@ include:
   - local: '.gitlab-ci/build-and-test.yml'
 {%- if dependencies == "conan" %}
   - local: '.gitlab-ci/conan-cache.yml'
+{%- elif dependencies == "vcpkg" %}
+  - local: '.gitlab-ci/vcpkg.yml'
 {%- endif %}
 
 test:ubuntu-20.04-gcc-9:
   extends: [ .build_and_test ]
   variables:
-    DOCKER_IMAGE: ubuntu-20.04-gcc-9
+    DOCKER_IMAGE: maciejpatro/ubuntu-20.04-gcc-9
 
 test:ubuntu-20.04-gcc-10:
   extends: [ .build_and_test ]
   variables:
-    DOCKER_IMAGE: ubuntu-20.04-gcc-10
+    DOCKER_IMAGE: maciejpatro/ubuntu-20.04-gcc-10
 
 test:ubuntu-20.04-gcc-11:
   extends: [ .build_and_test ]
   variables:
-    DOCKER_IMAGE: ubuntu-20.04-gcc-11
+    DOCKER_IMAGE: maciejpatro/ubuntu-20.04-gcc-11
 
 test:ubuntu-20.04-clang-12:
   extends: [ .build_and_test ]
   variables:
-    DOCKER_IMAGE: ubuntu-20.04-clang-12
+    DOCKER_IMAGE: maciejpatro/ubuntu-20.04-clang-12
 
 test:ubuntu-20.04-clang-13:
   extends: [ .build_and_test ]
   variables:
-    DOCKER_IMAGE: ubuntu-20.04-clang-13
+    DOCKER_IMAGE: maciejpatro/ubuntu-20.04-clang-13
 
 test:ubuntu-20.04-clang-14:
   extends: [ .build_and_test ]
   variables:
-    DOCKER_IMAGE: ubuntu-20.04-clang-14
+    DOCKER_IMAGE: maciejpatro/ubuntu-20.04-clang-14

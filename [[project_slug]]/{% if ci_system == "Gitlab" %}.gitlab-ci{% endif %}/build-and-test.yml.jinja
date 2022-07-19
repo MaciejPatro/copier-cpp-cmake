@@ -1,0 +1,11 @@
+.build_and_test:
+  image: $DOCKER_IMAGE
+  script:
+    - cmake -B release -DCMAKE_BUILD_TYPE=Release -G Ninja {% if dependencies == "vcpkg" %}-DCMAKE_TOOLCHAIN_FILE=./vcpkg/scripts/buildsystems/vcpkg.cmake{% endif %}
+    - cmake --build release
+    - ctest --test-dir release -VV
+  artifacts:
+    when: always
+    expire_in: 1 week
+    reports:
+      junit: release/*_tests.xml
