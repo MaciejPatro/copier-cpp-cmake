@@ -4,10 +4,15 @@ MAINTAINER Maciej Patro maciejpatro@gmail.com
 LABEL description="Package which provides the tooling to build with GCC-9."
 
 RUN apt-get update && \
-	apt-get install --no-install-recommends -y \
+	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
 		g++-9 \
 		python3 \
-		python3-pip && \
+		python3-pip \
+		curl \
+		zip \
+		unzip \
+		git \
+		tar && \
 	rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m pip install --upgrade pip

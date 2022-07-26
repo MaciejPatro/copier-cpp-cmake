@@ -5,18 +5,23 @@ LABEL description="Package which provides the tooling to build with clang-13."
 
 
 RUN apt-get update && \
-	apt-get install --no-install-recommends -y ca-certificates
+	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y ca-certificates
 RUN echo "deb [trusted=yes] http://apt.llvm.org/focal/ llvm-toolchain-focal-13 main" | tee /etc/apt/sources.list.d/clang.list
 
 RUN apt-get update && \
-	apt-get install --no-install-recommends -y \
+	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
 		llvm-13 \
 		clang-13 \
 		lld-13 \
 		libc++-13-dev \
 		libc++abi-13-dev \
 		python3 \
-		python3-pip && \
+		python3-pip \
+		curl \
+		zip \
+		unzip \
+		git \
+		tar && \
 	rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m pip install --upgrade pip

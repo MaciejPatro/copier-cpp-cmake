@@ -1,2 +1,10 @@
+variables:
+  VCPKG_DEFAULT_BINARY_CACHE: $CI_PROJECT_DIR/vcpkg_cache
+
+cache:
+  key: { files: [ vcpkg.json ] }
+  paths: [ $VCPKG_DEFAULT_BINARY_CACHE ]
+
 before_script:
-  - ./vcpkg/bootstrap-vcpkg.sh
+  - mkdir -p $VCPKG_DEFAULT_BINARY_CACHE
+  - ./vcpkg/bootstrap-vcpkg.sh -disableMetrics

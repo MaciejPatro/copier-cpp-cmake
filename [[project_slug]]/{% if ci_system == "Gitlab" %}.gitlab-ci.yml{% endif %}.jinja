@@ -1,3 +1,9 @@
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+{%- if dependencies == "vcpkg" %}
+  GIT_SUBMODULE_UPDATE_FLAGS: --depth=0  # required by vcpkg
+{%- endif %}
+
 include:
   - template: 'Workflows/MergeRequest-Pipelines.gitlab-ci.yml'
   - local: '.gitlab-ci/build-and-test.yml'

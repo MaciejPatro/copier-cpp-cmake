@@ -5,7 +5,7 @@ class {{ project_slug|replace("_", " ")|title|replace(" ", "") }}(ConanFile):
     generators = "cmake_find_package"
     requires = [
     {%- if unit_testing == "doctest" %}
-        "doctest/2.4.8"
+        "doctest/2.4.9"
     {%- elif unit_testing == "GTest" %}
         {%- if cpp_standard == 0 %}
         "gtest/1.8.1"

@@ -2,8 +2,5 @@ variables:
   CONAN_USER_HOME: $CI_PROJECT_DIR/conan_cache
 
 cache:
-  key:
-    files:
-      - conan/conanfile.py
-  paths:
-    - $CONAN_USER_HOME
+  key: { files: [ conan/conanfile.py ] }
+  paths: [ $CONAN_USER_HOME ]
