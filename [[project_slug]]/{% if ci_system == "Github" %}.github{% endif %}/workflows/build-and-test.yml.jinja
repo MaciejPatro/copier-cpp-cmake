@@ -1,0 +1,46 @@
+name: build-and-test
+
+on: [ push, pull_request ]
+
+{%- if dependencies == "conan" %}
+
+env:
+  CONAN_SYSREQUIRES_MODE: enabled
+  CONAN_USER_HOME: {{ "${{ github.workspace }}/conan-cache" }}
+{%- elif dependencies == "vcpkg" %}
+
+env:
+  VCPKG_DEFAULT_BINARY_CACHE: {{ "${{ github.workspace }}/vcpkg_cache" }}
+{%- endif %}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - ubuntu-20.04-clang-14
+          - ubuntu-20.04-clang-13
+          - ubuntu-20.04-clang-12
+          - ubuntu-20.04-gcc-11
+          - ubuntu-20.04-gcc-10
+          - ubuntu-20.04-gcc-9
+    container: {{ "maciejpatro/${{ matrix.image }}" }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+{%- if dependencies == "vcpkg" %}
+          fetch-depth: 0
+{%- endif %}
+      - uses: ./.github/actions/{{ dependencies }}
+      - name: Build and test
+        run: |
+          cmake -B release -DCMAKE_BUILD_TYPE=Release -G Ninja {%- if dependencies == "vcpkg" %} -DCMAKE_TOOLCHAIN_FILE=./vcpkg/scripts/buildsystems/vcpkg.cmake{% endif %}
+          cmake --build release
+          ctest --test-dir release -VV
+      - uses: mikepenz/action-junit-report@v3
+        if: always()
+        with:
+          report_paths: "./release/*_tests.xml"

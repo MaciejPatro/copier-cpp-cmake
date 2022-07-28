@@ -1,0 +1,16 @@
+name: "vcpkg"
+description: "caching and configuration for vcpkg packages"
+
+runs:
+  using: "composite"
+  steps:
+    - name: cache
+      uses: actions/cache@v2
+      with:
+        path: "${{ env.VCPKG_DEFAULT_BINARY_CACHE }}"
+        key: "${{ hashFiles('./vcpkg.json')}}"
+    - name: setup vcpkg
+      shell: bash
+      run: |
+        mkdir -p  "${{ env.VCPKG_DEFAULT_BINARY_CACHE }}"
+        ./vcpkg/bootstrap-vcpkg.sh -disableMetrics

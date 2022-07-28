@@ -1,4 +1,4 @@
-name: "conan_cache"
+name: "conan"
 description: "caching for conan packages"
 
 runs:
