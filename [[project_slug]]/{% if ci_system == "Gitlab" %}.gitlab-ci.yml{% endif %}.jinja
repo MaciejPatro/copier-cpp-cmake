@@ -13,37 +13,12 @@ include:
   - local: '.gitlab-ci/vcpkg.yml'
 {%- endif %}
 
-test:ubuntu-20.04-gcc-9:
-  extends: [ .build_and_test ]
-  variables:
-    DOCKER_IMAGE: maciejpatro/ubuntu-20.04-gcc-9
+{%- for name in ["ubuntu-20.04-gcc-9", "ubuntu-20.04-gcc-10", "ubuntu-20.04-gcc-11",
+        "ubuntu-22.04-gcc-12", "ubuntu-20.04-clang-12", "ubuntu-20.04-clang-13", "ubuntu-20.04-clang-14"] %}
 
-test:ubuntu-20.04-gcc-10:
+test:{{ name }}:
   extends: [ .build_and_test ]
   variables:
-    DOCKER_IMAGE: maciejpatro/ubuntu-20.04-gcc-10
+    DOCKER_IMAGE: maciejpatro/{{ name }}
 
-test:ubuntu-20.04-gcc-11:
-  extends: [ .build_and_test ]
-  variables:
-    DOCKER_IMAGE: maciejpatro/ubuntu-20.04-gcc-11
-
-test:ubuntu-22.04-gcc-12:
-  extends: [ .build_and_test ]
-  variables:
-    DOCKER_IMAGE: maciejpatro/ubuntu-22.04-gcc-12
-
-test:ubuntu-20.04-clang-12:
-  extends: [ .build_and_test ]
-  variables:
-    DOCKER_IMAGE: maciejpatro/ubuntu-20.04-clang-12
-
-test:ubuntu-20.04-clang-13:
-  extends: [ .build_and_test ]
-  variables:
-    DOCKER_IMAGE: maciejpatro/ubuntu-20.04-clang-13
-
-test:ubuntu-20.04-clang-14:
-  extends: [ .build_and_test ]
-  variables:
-    DOCKER_IMAGE: maciejpatro/ubuntu-20.04-clang-14
+{% endfor -%}
