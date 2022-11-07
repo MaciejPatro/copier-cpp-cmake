@@ -10,10 +10,10 @@ class {{ project_slug|replace("_", " ")|title|replace(" ", "") }}(ConanFile):
         {%- if cpp_standard == 0 %}
         "gtest/1.8.1"
         {%- else %}
-        "gtest/1.11.0"
+        "gtest/1.12.1"
         {%- endif %}
     {%- elif unit_testing == "Catch2" %}
-        "catch2/3.0.1"
+        "catch2/3.1.1"
     {%- elif unit_testing == "boost-ext-ut" %}
         "boost-ext-ut/1.1.9"
     {%- endif %}
