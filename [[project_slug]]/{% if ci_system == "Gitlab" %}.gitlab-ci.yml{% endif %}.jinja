@@ -20,5 +20,4 @@ test:{{ name }}:
   extends: [ .build_and_test ]
   variables:
     DOCKER_IMAGE: maciejpatro/{{ name }}
-
-{% endfor -%}
+{%- endfor %}
