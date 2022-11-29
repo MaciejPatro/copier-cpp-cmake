@@ -8,12 +8,13 @@ add_library(${PROJECT_NAME} {{- " INTERFACE" if project_type== "header-only libr
 
 target_include_directories(${PROJECT_NAME} INTERFACE include)
 target_sources(${PROJECT_NAME}
-    INTERFACE
 {%- if cmake_min_version|float >= 3.23 %}
+    INTERFACE
         FILE_SET HEADERS
         FILES
             include/{{ project_slug }}/{{ project_slug }}.hpp
 {%- else %}
+    INTERFACE
         include/{{ project_slug }}/{{ project_slug }}.hpp
 {% endif %}
 )
@@ -24,6 +25,7 @@ target_sources(${PROJECT_NAME}
     PRIVATE
         src/{{ project_slug }}.cpp
 {%- if cmake_min_version|float >= 3.23 %}
+    PRIVATE
         FILE_SET HEADERS
         FILES
             include/{{ project_slug }}/{{ project_slug }}.hpp

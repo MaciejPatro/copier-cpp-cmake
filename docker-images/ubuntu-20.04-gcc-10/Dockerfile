@@ -5,6 +5,7 @@ LABEL description="Package which provides the tooling to build with GCC-10."
 
 RUN apt-get update && \
 	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
+        build-essential \
 		g++-10 \
 		python3 \
 		python3-pip \
@@ -18,8 +19,8 @@ RUN apt-get update && \
 RUN python3 -m pip install --upgrade pip
 
 RUN pip3 install --no-cache-dir \
-		cmake \
-		conan>=1.40.3 \
+		'cmake>=3.23' \
+		'conan>=1.40.3' \
 		ninja
 
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 && \
