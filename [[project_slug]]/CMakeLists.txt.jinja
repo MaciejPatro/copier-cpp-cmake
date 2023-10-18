@@ -6,7 +6,7 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 include({{ project_slug }}_settings)
 
-{%- if dependencies == "conan" %}
+{%- if dependencies == "conan-1.x" %}
 include({{ project_slug }}_conan)
 {%- endif %}
 include(CTest)

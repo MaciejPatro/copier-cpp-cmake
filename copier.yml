@@ -100,10 +100,10 @@ dependencies:
   type: str
   help: Tool used for dependencies management
   when: "{{ project_setup == 'expert' }}"
-  default: conan
+  default: conan-1.x
   choices:
-    - conan
-# TODO: Support for vcpkg will be added in future   - vcpkg
+    - conan-1.x
+    - conan-2.x
     - None
 
 unit_testing_98:

@@ -2,7 +2,7 @@ name: build-and-test
 
 on: [ push, pull_request ]
 
-{%- if dependencies == "conan" %}
+{%- if dependencies == "conan-1.x" %}
 
 env:
   CONAN_SYSREQUIRES_MODE: enabled
@@ -35,7 +35,7 @@ jobs:
 {%- if dependencies == "vcpkg" %}
           fetch-depth: 0
 {%- endif %}
-      - uses: ./.github/actions/{{ dependencies }}
+      - uses: ./.github/actions/{{ 'conan' if dependencies.startswith('conan') else dependencies }}
       - name: Build and test
         run: |
           cmake -B release -DCMAKE_BUILD_TYPE=Release -G Ninja {%- if dependencies == "vcpkg" %} -DCMAKE_TOOLCHAIN_FILE=./vcpkg/scripts/buildsystems/vcpkg.cmake{% endif %}
